@@ -1,0 +1,33 @@
+lockfileVersion: 5.4
+
+specifiers:
+  vue-virtual-scroller: ^1.1.2
+
+dependencies:
+  vue-virtual-scroller: 1.1.2
+
+packages:
+
+  /scrollparent/2.0.1:
+    resolution: {integrity: sha512-HSdN78VMvFCSGCkh0oYX/tY4R3P1DW61f8+TeZZ4j2VLgfwvw0bpRSOv4PCVKisktIwbzHCfZsx+rLbbDBqIBA==}
+    dev: false
+
+  /vue-observe-visibility/0.4.6:
+    resolution: {integrity: sha512-xo0CEVdkjSjhJoDdLSvoZoQrw/H2BlzB5jrCBKGZNXN2zdZgMuZ9BKrxXDjNP2AxlcCoKc8OahI3F3r3JGLv2Q==}
+    dev: false
+
+  /vue-resize/0.4.5:
+    resolution: {integrity: sha512-bhP7MlgJQ8TIkZJXAfDf78uJO+mEI3CaLABLjv0WNzr4CcGRGPIAItyWYnP6LsPA4Oq0WE+suidNs6dgpO4RHg==}
+    peerDependencies:
+      vue: ^2.3.0
+    dev: false
+
+  /vue-virtual-scroller/1.1.2:
+    resolution: {integrity: sha512-SkUyc7QHCJFB5h1Fya7LxVizlVzOZZuFVipBGHYoTK8dwLs08bIz/tclvRApYhksaJIm/nn51inzO2UjpGJPMQ==}
+    peerDependencies:
+      vue: ^2.6.11
+    dependencies:
+      scrollparent: 2.0.1
+      vue-observe-visibility: 0.4.6
+      vue-resize: 0.4.5
+    dev: false

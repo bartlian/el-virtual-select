@@ -1,0 +1,36 @@
+{
+  "name": "el-virtual-select",
+  "version": "0.1.0",
+  "description": "a VUE virtual select ui component, which extends element ui",
+  "module": "packages/src/index.js",
+  "author": {
+    "name": "bartlian"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bartlian/el-virtual-select.git"
+  },
+  "files": [
+    "lib",
+    "packages/src"
+  ],
+  "keywords": [
+    "virtual select",
+    "element ui 虚拟滚动选择框"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bartlian/el-virtual-select/issues"
+  },
+  "homepage": "https://github.com/bartlian/el-virtual-select#readme",
+  "dependencies": {
+    "vue-virtual-scroller": "^1.1.2"
+  },
+  "peerDependencies": {
+    "vue": "^2.5.17",
+    "element-ui": "^2.1.0"
+  },
+}
