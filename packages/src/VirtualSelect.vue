@@ -47,6 +47,7 @@
           <el-option
             :key="item[valueKey]"
             :value="item[valueKey]"
+            :label="item[labelKey]"
           >
             <slot name="label" :item="item">{{ item[labelKey] }}</slot>
           </el-option>
