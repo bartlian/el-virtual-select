@@ -1,6 +1,6 @@
 {
   "name": "el-virtual-select",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "a VUE virtual select ui component, which extends element ui",
   "type": "module",
   "main": "dist/el-virtual-select.umd.cjs",
@@ -18,7 +18,8 @@
   ],
   "keywords": [
     "virtual select",
-    "element ui 虚拟滚动选择框"
+    "element ui",
+    "虚拟滚动选择框"
   ],
   "license": "MIT",
   "bugs": {

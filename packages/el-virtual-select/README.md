@@ -1,6 +1,6 @@
 # el-virtual-select
 
-一个基于[vue-virtual-scroller](https://www.npmjs.com/package/vue-virtual-scroller) 和 element ui 选择框[el-select](https://element.eleme.cn/#/zh-CN/component/select)的具有虚拟滚动的下拉选择组件，
+一个基于[vue-virtual-scroller](https://www.npmjs.com/package/vue-virtual-scroller) 和 element ui 选择框[el-select](https://element.eleme.cn/#/zh-CN/component/select)的具有虚拟滚动的下拉选择组件。
 
 ## 具体用法
 
@@ -66,7 +66,7 @@ const value = ref('')
     <ElVirtualSelect
       v-model="value"
       :options="list"
-      valueKey="code"
+      value-key="code"
       label-key="name"
     />
   </div>
@@ -74,7 +74,7 @@ const value = ref('')
 
 <script setup>
 import { ref } from 'vue'
-import elVirtualSelect from 'el-virtual-select'
+import ElVirtualSelect from 'el-virtual-select'
 import 'el-virtual-select/dist/style.css'
 
 const list = Array.from({ length: 1000 }).map((i, index) => ({
