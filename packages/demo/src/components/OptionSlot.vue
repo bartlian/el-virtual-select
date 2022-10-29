@@ -1,17 +1,17 @@
 <template>
   <div>
-    <elVirtualSelect v-model="value" :options="list">
+    <ElVirtualSelect v-model="value" :options="list">
       <template #label="{ item }">
         <span>{{ item.value }} &nbsp;&nbsp; {{ item.label }}</span>
       </template>
-    </elVirtualSelect>
+    </ElVirtualSelect>
     <p>选中的值：{{ value }}</p>
   </div>
 </template>
 
 <script setup>
 import { ref } from 'vue'
-import elVirtualSelect from 'el-virtual-select'
+import ElVirtualSelect from 'el-virtual-select'
 import 'el-virtual-select/dist/style.css'
 
 const list = Array.from({ length: 1000 }).map((i, index) => ({

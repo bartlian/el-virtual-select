@@ -1,3 +1,3 @@
-import VirtualSelect from './VirtualSelect.vue'
+import ElVirtualSelect from './VirtualSelect.vue'
 
-export default VirtualSelect
+export default ElVirtualSelect

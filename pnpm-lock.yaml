@@ -8,7 +8,6 @@ importers:
       '@vitejs/plugin-vue2': ^2.0.0
       '@vitejs/plugin-vue2-jsx': ^1.0.3
       '@vue/eslint-config-prettier': ^7.0.0
-      el-virtual-select: workspace:*
       eslint: ^8.26.0
       eslint-plugin-vue: ^9.6.0
       prettier: ^2.7.1
@@ -17,7 +16,6 @@ importers:
       vue: 2.7.13
     dependencies:
       '@vitejs/plugin-vue2': 2.0.0_vite@3.2.1+vue@2.7.13
-      el-virtual-select: link:packages/el-virtual-select
       vue: 2.7.13
     devDependencies:
       '@rushstack/eslint-patch': 1.2.0
@@ -31,13 +29,15 @@ importers:
 
   packages/demo:
     specifiers:
+      el-virtual-select: workspace:*
       element-ui: ^2.1.0
+      vue: 2.7.13
       vue-router: ^3.6.5
-      vue-virtual-scroller: ^1.1.2
     dependencies:
-      element-ui: 2.15.10
+      el-virtual-select: link:../el-virtual-select
+      element-ui: 2.15.10_vue@2.7.13
+      vue: 2.7.13
       vue-router: 3.6.5
-      vue-virtual-scroller: 1.1.2
 
   packages/el-virtual-select:
     specifiers:
@@ -852,7 +852,7 @@ packages:
     resolution: {integrity: sha512-M8WEXFuKXMYMVr45fo8mq0wUrrJHheiKZf6BArTKk9ZBYCKJEOU5H8cdWgDT+qCVZf7Na4lVUaZsA+h6uA9+PA==}
     dev: true
 
-  /element-ui/2.15.10:
+  /element-ui/2.15.10_vue@2.7.13:
     resolution: {integrity: sha512-jmD++mU2wKXbisvx4fxOl2mHaU+HWHTAq/3Wf8x9Bwyu4GdDZPLABb+CGi3DWN6fPqdgRcd74aX39DO+YHObLw==}
     peerDependencies:
       vue: ^2.5.17
@@ -863,6 +863,7 @@ packages:
       normalize-wheel: 1.0.1
       resize-observer-polyfill: 1.5.1
       throttle-debounce: 1.1.0
+      vue: 2.7.13
     dev: false
 
   /esbuild-android-64/0.15.12:

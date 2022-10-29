@@ -10,11 +10,11 @@ function ne() {
   var r = e.indexOf("Edge/");
   return r > 0 ? parseInt(e.substring(r + 5, e.indexOf(".", r)), 10) : -1;
 }
-var O = void 0;
-function M() {
-  M.init || (M.init = !0, O = ne() !== -1);
+var x = void 0;
+function L() {
+  L.init || (L.init = !0, x = ne() !== -1);
 }
-var L = {
+var F = {
   render: function() {
     var t = this, i = t.$createElement, s = t._self._c || i;
     return s("div", { staticClass: "resize-observer", attrs: { tabindex: "-1" } });
@@ -30,23 +30,23 @@ var L = {
       this._resizeObject.contentDocument.defaultView.addEventListener("resize", this.compareAndNotify), this.compareAndNotify();
     },
     removeResizeHandlers: function() {
-      this._resizeObject && this._resizeObject.onload && (!O && this._resizeObject.contentDocument && this._resizeObject.contentDocument.defaultView.removeEventListener("resize", this.compareAndNotify), delete this._resizeObject.onload);
+      this._resizeObject && this._resizeObject.onload && (!x && this._resizeObject.contentDocument && this._resizeObject.contentDocument.defaultView.removeEventListener("resize", this.compareAndNotify), delete this._resizeObject.onload);
     }
   },
   mounted: function() {
     var t = this;
-    M(), this.$nextTick(function() {
+    L(), this.$nextTick(function() {
       t._w = t.$el.offsetWidth, t._h = t.$el.offsetHeight;
     });
     var i = document.createElement("object");
-    this._resizeObject = i, i.setAttribute("aria-hidden", "true"), i.setAttribute("tabindex", -1), i.onload = this.addResizeHandlers, i.type = "text/html", O && this.$el.appendChild(i), i.data = "about:blank", O || this.$el.appendChild(i);
+    this._resizeObject = i, i.setAttribute("aria-hidden", "true"), i.setAttribute("tabindex", -1), i.onload = this.addResizeHandlers, i.type = "text/html", x && this.$el.appendChild(i), i.data = "about:blank", x || this.$el.appendChild(i);
   },
   beforeDestroy: function() {
     this.removeResizeHandlers();
   }
 };
 function le(e) {
-  e.component("resize-observer", L), e.component("ResizeObserver", L);
+  e.component("resize-observer", F), e.component("ResizeObserver", F);
 }
 var oe = {
   version: "0.4.5",
@@ -268,13 +268,13 @@ const te = {
 function ie() {
   return this.items.length && typeof this.items[0] != "object";
 }
-let F = !1;
+let P = !1;
 if (typeof window < "u") {
-  F = !1;
+  P = !1;
   try {
     var ge = Object.defineProperty({}, "passive", {
       get() {
-        F = !0;
+        P = !0;
       }
     });
     window.addEventListener("test", null, ge);
@@ -285,7 +285,7 @@ let Se = 0;
 var $e = {
   name: "RecycleScroller",
   components: {
-    ResizeObserver: L
+    ResizeObserver: F
   },
   directives: {
     ObserveVisibility: Q
@@ -512,7 +512,7 @@ var $e = {
         for (let d = 0, _ = $.length; d < _; d++)
           f = $[d], f.nr.used && (e && (f.nr.index = n.indexOf(f.item)), (f.nr.index === -1 || f.nr.index < v || f.nr.index >= p) && this.unuseView(f));
       const B = V ? null : /* @__PURE__ */ new Map();
-      let z, w, T, x;
+      let z, w, T, O;
       for (let d = v; d < p; d++) {
         z = n[d];
         const _ = l ? z[l] : z;
@@ -522,7 +522,7 @@ var $e = {
           f && this.unuseView(f);
           continue;
         }
-        f ? (f.nr.used = !0, f.item = z) : (d === n.length - 1 && this.$emit("scroll-end"), d === 0 && this.$emit("scroll-start"), w = z[a], T = u.get(w), V ? T && T.length ? (f = T.pop(), f.item = z, f.nr.used = !0, f.nr.index = d, f.nr.key = _, f.nr.type = w) : f = this.addView($, d, z, _, w) : (x = B.get(w) || 0, (!T || x >= T.length) && (f = this.addView($, d, z, _, w), this.unuseView(f, !0), T = u.get(w)), f = T[x], f.item = z, f.nr.used = !0, f.nr.index = d, f.nr.key = _, f.nr.type = w, B.set(w, x + 1), x++), m.set(_, f)), i === null ? (f.position = h[d - 1].accumulator, f.offset = 0) : (f.position = Math.floor(d / s) * i, f.offset = d % s * r);
+        f ? (f.nr.used = !0, f.item = z) : (d === n.length - 1 && this.$emit("scroll-end"), d === 0 && this.$emit("scroll-start"), w = z[a], T = u.get(w), V ? T && T.length ? (f = T.pop(), f.item = z, f.nr.used = !0, f.nr.index = d, f.nr.key = _, f.nr.type = w) : f = this.addView($, d, z, _, w) : (O = B.get(w) || 0, (!T || O >= T.length) && (f = this.addView($, d, z, _, w), this.unuseView(f, !0), T = u.get(w)), f = T[O], f.item = z, f.nr.used = !0, f.nr.index = d, f.nr.key = _, f.nr.type = w, B.set(w, O + 1), O++), m.set(_, f)), i === null ? (f.position = h[d - 1].accumulator, f.offset = 0) : (f.position = Math.floor(d / s) * i, f.offset = d % s * r);
       }
       return this.$_startIndex = v, this.$_endIndex = p, this.emitUpdate && this.$emit("update", v, p, g, S), clearTimeout(this.$_sortTimer), this.$_sortTimer = setTimeout(this.sortViews, 300), {
         continuous: V
@@ -559,7 +559,7 @@ var $e = {
       this.pageMode ? this.addListeners() : this.removeListeners();
     },
     addListeners() {
-      this.listenerTarget = this.getListenerTarget(), this.listenerTarget.addEventListener("scroll", this.handleScroll, F ? {
+      this.listenerTarget = this.getListenerTarget(), this.listenerTarget.addEventListener("scroll", this.handleScroll, P ? {
         passive: !0
       } : !1), this.listenerTarget.addEventListener("resize", this.handleResize);
     },
@@ -720,7 +720,7 @@ var se = function() {
   );
 }, we = [];
 se._withStripped = !0;
-const Te = void 0, Ve = void 0, Ie = void 0, Re = !1, P = /* @__PURE__ */ U(
+const Te = void 0, Ve = void 0, Ie = void 0, Re = !1, E = /* @__PURE__ */ U(
   { render: se, staticRenderFns: we },
   Te,
   ze,
@@ -732,10 +732,10 @@ const Te = void 0, Ve = void 0, Ie = void 0, Re = !1, P = /* @__PURE__ */ U(
   void 0,
   void 0
 );
-var xe = {
+var Oe = {
   name: "DynamicScroller",
   components: {
-    RecycleScroller: P
+    RecycleScroller: E
   },
   provide() {
     return typeof ResizeObserver < "u" && (this.$_resizeObserver = new ResizeObserver((e) => {
@@ -874,7 +874,7 @@ var xe = {
     }
   }
 };
-const Oe = xe;
+const xe = Oe;
 var re = function() {
   var e = this, t = e.$createElement, i = e._self._c || t;
   return i(
@@ -931,19 +931,19 @@ var re = function() {
   );
 }, Ce = [];
 re._withStripped = !0;
-const De = void 0, ke = void 0, Ae = void 0, Me = !1, E = /* @__PURE__ */ U(
+const De = void 0, ke = void 0, Ae = void 0, Le = !1, M = /* @__PURE__ */ U(
   { render: re, staticRenderFns: Ce },
   De,
-  Oe,
+  xe,
   ke,
-  Me,
+  Le,
   Ae,
   !1,
   void 0,
   void 0,
   void 0
 );
-var Le = {
+var Fe = {
   name: "DynamicScrollerItem",
   inject: ["vscrollData", "vscrollParent", "vscrollResizeObserver"],
   props: {
@@ -1062,11 +1062,11 @@ var Le = {
     return e(this.tag, this.$slots.default);
   }
 };
-const Fe = Le, Pe = void 0, Ee = void 0, Ne = void 0, Ue = void 0, N = /* @__PURE__ */ U(
+const Pe = Fe, Ee = void 0, Me = void 0, Ne = void 0, Ue = void 0, N = /* @__PURE__ */ U(
   {},
-  Pe,
-  Fe,
   Ee,
+  Pe,
+  Me,
   Ue,
   Ne,
   !1,
@@ -1075,7 +1075,7 @@ const Fe = Le, Pe = void 0, Ee = void 0, Ne = void 0, Ue = void 0, N = /* @__PUR
   void 0
 );
 function Be(e, t) {
-  e.component(`${t}recycle-scroller`, P), e.component(`${t}RecycleScroller`, P), e.component(`${t}dynamic-scroller`, E), e.component(`${t}DynamicScroller`, E), e.component(`${t}dynamic-scroller-item`, N), e.component(`${t}DynamicScrollerItem`, N);
+  e.component(`${t}recycle-scroller`, E), e.component(`${t}RecycleScroller`, E), e.component(`${t}dynamic-scroller`, M), e.component(`${t}DynamicScroller`, M), e.component(`${t}dynamic-scroller-item`, N), e.component(`${t}DynamicScrollerItem`, N);
 }
 const He = {
   version: "1.1.2",
@@ -1122,7 +1122,7 @@ function je(e, t, i, s, r, o, a, l) {
 const Ke = {
   name: "ElVirtualSelect",
   components: {
-    DynamicScroller: E,
+    DynamicScroller: M,
     DynamicScrollerItem: N
   },
   props: {
@@ -1195,11 +1195,11 @@ const Ke = {
     itemTag: String,
     beautifyScrollerStyle: {
       type: Boolean,
-      default: !0
+      default: !1
     },
-    dropdownMaxHeight: {
+    dropdownItemsCount: {
       type: Number,
-      default: 200
+      default: 6
     }
   },
   watch: {
@@ -1220,7 +1220,7 @@ const Ke = {
   },
   methods: {
     handleScrollerVisible() {
-      const e = this.getIndex() - (Math.ceil(this.dropdownMaxHeight / this.minItemSize) - 1);
+      const e = this.getIndex() - (this.dropdownItemsCount - 1);
       e > 1 && this.$refs.recycleScrollerRef.scrollToItem(e);
     },
     getIndex() {
@@ -1243,10 +1243,10 @@ const Ke = {
 };
 var We = function() {
   var t = this, i = t._self._c;
-  return i("el-select", { attrs: { multiple: t.multiple, disabled: t.disabled, size: t.size, clearable: t.clearable, collapseTags: t.collapseTags, multipleLimit: t.multipleLimit, placeholder: t.placeholder, filterable: t.filterable, allowCreate: t.allowCreate, remote: t.remote, remoteMethod: t.remoteMethod, loading: t.loading, loadingText: t.loadingText, noMatchText: t.noMatchText, noDataText: t.noDataText, popperClass: t.popperClass, reserveKeyword: t.reserveKeyword, defaultFirstOption: t.defaultFirstOption, popperAppendToBody: t.popperAppendToBody, "filter-method": t.handleFilter }, on: { focus: t.handleSelectFocus, change: t.handleSelectChange }, model: { value: t.localValue, callback: function(s) {
+  return i("el-select", t._g(t._b({ attrs: { multiple: t.multiple, disabled: t.disabled, size: t.size, clearable: t.clearable, collapseTags: t.collapseTags, multipleLimit: t.multipleLimit, placeholder: t.placeholder, filterable: t.filterable, allowCreate: t.allowCreate, remote: t.remote, remoteMethod: t.remoteMethod, loading: t.loading, loadingText: t.loadingText, noMatchText: t.noMatchText, noDataText: t.noDataText, popperClass: t.popperClass, reserveKeyword: t.reserveKeyword, defaultFirstOption: t.defaultFirstOption, popperAppendToBody: t.popperAppendToBody, "filter-method": t.handleFilter }, on: { focus: t.handleSelectFocus, change: t.handleSelectChange }, model: { value: t.localValue, callback: function(s) {
     t.localValue = s;
-  }, expression: "localValue" } }, [i("DynamicScroller", { ref: "recycleScrollerRef", staticClass: "scroller", class: t.beautifyScrollerStyle ? "beautify-scroller" : "", style: { maxHeight: t.dropdownMaxHeight }, attrs: { items: t.localList, "min-item-size": t.minItemSize, "key-field": t.valueKey, "list-class": t.listClass, "item-class": t.itemClass, "list-tag": t.listTag, "item-tag": t.itemTag }, on: { visible: t.handleScrollerVisible }, scopedSlots: t._u([{ key: "default", fn: function({ item: s, index: r, active: o }) {
-    return [i("DynamicScrollerItem", { attrs: { item: s, active: o, "data-index": r } }, [i("el-option", { key: s[t.valueKey], attrs: { value: s[t.valueKey], label: s[t.labelKey] } }, [t._t("label", function() {
+  }, expression: "localValue" } }, "el-select", t.$attrs, !1), t.$listeners), [i("DynamicScroller", { ref: "recycleScrollerRef", staticClass: "scroller", class: t.beautifyScrollerStyle ? "beautify-scroller" : "", attrs: { items: t.localList, "min-item-size": t.minItemSize, "key-field": t.valueKey, "list-class": t.listClass, "item-class": t.itemClass, "list-tag": t.listTag, "item-tag": t.itemTag }, on: { visible: t.handleScrollerVisible }, scopedSlots: t._u([{ key: "default", fn: function({ item: s, index: r, active: o }) {
+    return [i("DynamicScrollerItem", { attrs: { item: s, active: o, "data-index": r } }, [i("el-option", { key: s[t.valueKey], attrs: { value: s[t.valueKey], label: s[t.labelKey], disabled: s.disabled } }, [t._t("label", function() {
       return [t._v(t._s(s[t.labelKey]))];
     }, { item: s })], 2)], 1)];
   } }, t.localList.length === 0 ? { key: "after", fn: function() {
@@ -1258,7 +1258,7 @@ var We = function() {
   qe,
   !1,
   null,
-  "d06cd536",
+  "1aeeb08b",
   null,
   null
 );

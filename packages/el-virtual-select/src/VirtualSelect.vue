@@ -28,8 +28,8 @@
   >
     <DynamicScroller
       ref="recycleScrollerRef"
+      class="scroller"
       :class="beautifyScrollerStyle ? 'beautify-scroller' : ''"
-      :style="{ 'max-height': dropdownMaxHeight }"
       :items="localList"
       :min-item-size="minItemSize"
       :key-field="valueKey"
@@ -141,9 +141,9 @@ export default {
       type: Boolean,
       default: false
     },
-    dropdownMaxHeight: {
+    dropdownItemsCount: {
       type: Number,
-      default: 200
+      default: 6
     }
   },
   watch: {
@@ -165,9 +165,7 @@ export default {
   },
   methods: {
     handleScrollerVisible() {
-      const index =
-        this.getIndex() -
-        (Math.ceil(this.dropdownMaxHeight / this.minItemSize) - 1)
+      const index = this.getIndex() - (this.dropdownItemsCount - 1)
       index > 1 && this.$refs.recycleScrollerRef.scrollToItem(index)
     },
     getIndex() {
@@ -197,16 +195,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.beautify-scroller::-webkit-scrollbar {
-  width: 8px;
+.scroller {
+  max-height: 200px;
 }
-.beautify-scroller::-webkit-scrollbar-track {
-  border-radius: 4px;
-  background-color: #f5f5f5;
-}
-.beautify-scroller::-webkit-scrollbar-thumb:vertical {
-  border-radius: 4px;
-  background-color: #a4a4a4;
+.beautify-scroller {
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 4px;
+    background-color: #f5f5f5;
+  }
+  &::-webkit-scrollbar-thumb:vertical {
+    border-radius: 4px;
+    background-color: #a4a4a4;
+  }
 }
 
 .empty-data {
