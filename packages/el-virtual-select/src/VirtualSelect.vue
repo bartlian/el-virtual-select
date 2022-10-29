@@ -1,5 +1,5 @@
 <template>
-  <el-select 
+  <el-select
     v-model="localValue"
     :multiple="multiple"
     :disabled="disabled"
@@ -28,7 +28,7 @@
       ref="recycleScrollerRef"
       class="scroller"
       :class="beautifyScrollerStyle ? 'beautify-scroller' : ''"
-      :style="{maxHeight: dropdownMaxHeight}"
+      :style="{ maxHeight: dropdownMaxHeight }"
       :items="localList"
       :min-item-size="minItemSize"
       :key-field="valueKey"
@@ -39,11 +39,7 @@
       @visible="handleScrollerVisible"
     >
       <template v-slot="{ item, index, active }">
-        <DynamicScrollerItem
-          :item="item"
-          :active="active"
-          :data-index="index"
-        >
+        <DynamicScrollerItem :item="item" :active="active" :data-index="index">
           <el-option
             :key="item[valueKey]"
             :value="item[valueKey]"
@@ -141,7 +137,7 @@ export default {
     itemTag: String,
     beautifyScrollerStyle: {
       type: Boolean,
-      default: true
+      default: false
     },
     dropdownMaxHeight: {
       type: Number,
@@ -150,7 +146,7 @@ export default {
   },
   watch: {
     options: {
-      handler: function(val) {
+      handler: function (val) {
         this.localList = val
         this.rawList = val
       },
@@ -167,16 +163,23 @@ export default {
   },
   methods: {
     handleScrollerVisible() {
-      const index = this.getIndex() - (Math.ceil(this.dropdownMaxHeight / this.minItemSize) - 1)
-      index > 1 && this.$refs.recycleScrollerRef.scrollToItem(index);
+      const index =
+        this.getIndex() -
+        (Math.ceil(this.dropdownMaxHeight / this.minItemSize) - 1)
+      index > 1 && this.$refs.recycleScrollerRef.scrollToItem(index)
     },
     getIndex() {
       return !this.multiple
         ? this.localList.findIndex(i => i[this.valueKey] === this.localValue)
-        : this.localList.findIndex(i => i[this.valueKey] === this.localValue[this.localValue.length - 1])
+        : this.localList.findIndex(
+            i =>
+              i[this.valueKey] === this.localValue[this.localValue.length - 1]
+          )
     },
     handleFilter(query) {
-      this.localList = this.rawList.filter(i => String(i[this.labelKey]).includes(query))
+      this.localList = this.rawList.filter(i =>
+        String(i[this.labelKey]).includes(query)
+      )
     },
     handleSelectFocus() {
       if (this.localList.length < this.rawList.length) {
@@ -191,7 +194,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .beautify-scroller::-webkit-scrollbar {
   width: 8px;
 }
