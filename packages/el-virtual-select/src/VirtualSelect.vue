@@ -23,12 +23,13 @@
     :filter-method="handleFilter"
     @focus="handleSelectFocus"
     @change="handleSelectChange"
+    v-bind="$attrs"
+    v-on="$listeners"
   >
     <DynamicScroller
       ref="recycleScrollerRef"
-      class="scroller"
       :class="beautifyScrollerStyle ? 'beautify-scroller' : ''"
-      :style="{ maxHeight: dropdownMaxHeight }"
+      :style="{ 'max-height': dropdownMaxHeight }"
       :items="localList"
       :min-item-size="minItemSize"
       :key-field="valueKey"
@@ -44,6 +45,7 @@
             :key="item[valueKey]"
             :value="item[valueKey]"
             :label="item[labelKey]"
+            :disabled="item.disabled"
           >
             <slot name="label" :item="item">{{ item[labelKey] }}</slot>
           </el-option>
