@@ -12,17 +12,9 @@ export default defineConfig({
         [
           '@babel/preset-env',
           {
-            useBuiltIns: false,
-            exclude: ['transform-typeof-symbol'],
-            modules: false
-          }
-        ]
-      ],
-      plugins: [
-        [
-          '@babel/plugin-transform-runtime',
-          {
-            corejs: false
+            targets: {
+              ie: '11'
+            }
           }
         ]
       ]

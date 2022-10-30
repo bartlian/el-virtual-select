@@ -30,13 +30,14 @@
     "build": "vite build --mode production"
   },
   "dependencies": {
-    "@babel/plugin-transform-runtime": "^7.19.6",
-    "@babel/preset-env": "^7.19.4",
-    "@rollup/plugin-babel": "^6.0.2",
     "vue-virtual-scroller": "^1.1.2"
   },
   "peerDependencies": {
     "element-ui": "^2.1.0",
     "vue": "^2.5.17"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.19.4",
+    "@rollup/plugin-babel": "^6.0.2"
   }
 }
