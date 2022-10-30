@@ -9,7 +9,6 @@
   "dependencies": {
     "vue": "2.7.13",
     "el-virtual-select": "workspace:*",
-    "element-ui": "^2.1.0",
-    "vue-router": "^3.6.5"
+    "element-ui": "^2.1.0"
   }
 }
