@@ -39,18 +39,18 @@ importers:
 
   packages/el-virtual-select:
     specifiers:
-      '@babel/plugin-transform-runtime': ^7.19.6
       '@babel/preset-env': ^7.19.4
       '@rollup/plugin-babel': ^6.0.2
       element-ui: ^2.1.0
+      lodash-es: ^4.17.21
       vue: ^2.5.17
       vue-virtual-scroller: ^1.1.2
     dependencies:
       element-ui: 2.15.10_vue@2.7.13
+      lodash-es: 4.17.21
       vue: 2.7.13
       vue-virtual-scroller: 1.1.2_vue@2.7.13
     devDependencies:
-      '@babel/plugin-transform-runtime': 7.19.6_@babel+core@7.19.6
       '@babel/preset-env': 7.19.4_@babel+core@7.19.6
       '@rollup/plugin-babel': 6.0.2_@babel+core@7.19.6
 
@@ -1011,23 +1011,6 @@ packages:
     dependencies:
       '@babel/core': 7.19.6
       '@babel/helper-plugin-utils': 7.19.0
-    dev: true
-
-  /@babel/plugin-transform-runtime/7.19.6_@babel+core@7.19.6:
-    resolution: {integrity: sha512-PRH37lz4JU156lYFW1p8OxE5i7d6Sl/zV58ooyr+q1J1lnQPyg5tIiXlIwNVhJaY4W3TmOtdc8jqdXQcB1v5Yw==}
-    engines: {node: '>=6.9.0'}
-    peerDependencies:
-      '@babel/core': ^7.0.0-0
-    dependencies:
-      '@babel/core': 7.19.6
-      '@babel/helper-module-imports': 7.18.6
-      '@babel/helper-plugin-utils': 7.19.0
-      babel-plugin-polyfill-corejs2: 0.3.3_@babel+core@7.19.6
-      babel-plugin-polyfill-corejs3: 0.6.0_@babel+core@7.19.6
-      babel-plugin-polyfill-regenerator: 0.4.1_@babel+core@7.19.6
-      semver: 6.3.0
-    transitivePeerDependencies:
-      - supports-color
     dev: true
 
   /@babel/plugin-transform-shorthand-properties/7.18.6_@babel+core@7.19.6:
@@ -2473,6 +2456,10 @@ packages:
     dependencies:
       p-locate: 5.0.0
     dev: true
+
+  /lodash-es/4.17.21:
+    resolution: {integrity: sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==}
+    dev: false
 
   /lodash.debounce/4.0.8:
     resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}

@@ -61,6 +61,7 @@
 <script>
 import { DynamicScroller, DynamicScrollerItem } from 'vue-virtual-scroller'
 import 'vue-virtual-scroller/dist/vue-virtual-scroller.css'
+import { isEqual } from 'lodash-es'
 
 export default {
   name: 'ElVirtualSelect',
@@ -154,6 +155,14 @@ export default {
       },
       deep: true,
       immediate: true
+    },
+    value: {
+      handler: function (val) {
+        if (!isEqual(val, this.localValue)) {
+          this.localValue = val
+        }
+      },
+      deep: true
     }
   },
   data() {
