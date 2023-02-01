@@ -136,3 +136,58 @@ const list = Array.from({ length: 1000 }).map((i, index) => ({
 const value = ref('')
 </script>
 ```
+
+### 远程搜索
+
+```js
+<template>
+  <div>
+    <ElVirtualSelect
+      v-model="value"
+      :options="list"
+      remote
+      :remote-method="handleRemoteSearch"
+      @change="handleChange"
+      @focus="handleFocus"
+    ></ElVirtualSelect>
+  </div>
+</template>
+
+<script setup>
+import { ref } from 'vue'
+import ElVirtualSelect from 'el-virtual-select'
+import 'el-virtual-select/dist/style.css'
+
+const rawList = Array.from({ length: 1000 }).map((i, index) => ({
+  label: 'label' + index,
+  value: 'value' + index
+}))
+const list = ref(rawList)
+let cachedLastQuery = ''
+let currentLabel = ''
+const value = ref('')
+const handleRemoteSearch = val => {
+  cachedLastQuery = val
+  list.value = rawList.filter(i => i.label.includes(val))
+}
+const handleFocus = () => {
+  if (!value.value) {
+    list.value = rawList
+  }
+
+  // 处理一些特殊情况。比如已经选择了一项，再次聚焦，搜索，但是没选。
+  // 然后聚焦选择时，可以显示当前选中的value对应的下拉列表
+  if (value.value && !currentLabel.includes(cachedLastQuery)) {
+    handleRemoteSearch('')
+  }
+}
+const handleChange = val => {
+  console.log('current value:', val)
+  currentLabel = list.value.find(i => i.value === val)?.label ?? ''
+  console.log('current label:', currentLabel)
+}
+const reset = () => {
+  value.value = ''
+}
+</script>
+```
