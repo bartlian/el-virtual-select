@@ -1,6 +1,6 @@
 {
   "name": "el-virtual-select",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "a VUE virtual select ui component, which extends element ui",
   "type": "module",
   "main": "dist/el-virtual-select.umd.cjs",
