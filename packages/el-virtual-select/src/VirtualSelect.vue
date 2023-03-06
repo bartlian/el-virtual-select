@@ -28,6 +28,7 @@
     v-on="$listeners"
   >
     <DynamicScroller
+      v-if="isShownDropdown"
       ref="recycleScrollerRef"
       class="scroller"
       :class="beautifyScrollerStyle ? 'beautify-scroller' : ''"
@@ -56,6 +57,15 @@
         <p class="empty-data">{{ noMatchText }}</p>
       </template>
     </DynamicScroller>
+    <el-option
+      v-if="!isShownDropdown && chosenItem"
+      :key="chosenItem[valueKey]"
+      :value="chosenItem[valueKey]"
+      :label="chosenItem[labelKey]"
+      :disabled="chosenItem.disabled"
+    >
+      <slot name="label" :item="chosenItem">{{ chosenItem[labelKey] }}</slot>
+    </el-option>
   </el-select>
 </template>
 
@@ -178,7 +188,11 @@ export default {
     return {
       localValue: this.value,
       localList: [],
-      rawList: []
+      rawList: [],
+      // 是否展示过下拉选项
+      isShownDropdown: false,
+      // 详情等场景时el-select展示使用
+      chosenItem: null
     }
   },
   mounted() {
@@ -187,18 +201,10 @@ export default {
   methods: {
     async showLabel() {
       // label显示处理
-      const { localValue, localList, valueKey, labelKey } = this
-
+      const { localValue, localList, valueKey } = this
       if (localValue && Array.isArray(localList) && localList.length > 1) {
-        const label = localList.find(i => i[valueKey] === localValue)?.[
-          labelKey
-        ]
-
-        if (label) {
-          await this.$nextTick()
-          this.$refs.elSelectRef.selectedLabel = label
-          this.$refs.elSelectRef.selected.currentLabel = label
-        }
+        const chosenItem = localList.find(i => i[valueKey] === localValue)
+        this.chosenItem = chosenItem
       }
     },
     handleScrollerVisible() {
@@ -219,6 +225,9 @@ export default {
       )
     },
     handleSelectFocus() {
+      if (!this.isShownDropdown) {
+        this.isShownDropdown = true
+      }
       if (this.localList.length < this.rawList.length) {
         this.localList = this.rawList
       }
