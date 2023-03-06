@@ -3,7 +3,7 @@
     <ElVirtualSelect
       v-model="value"
       :options="list"
-      multiple
+      :multiple="false"
       @change="handleChange"
     ></ElVirtualSelect>
     <p>选中的值：{{ value }}</p>
@@ -20,7 +20,7 @@ const list = Array.from({ length: 1000 }).map((i, index) => ({
   label: 'label' + index,
   value: 'value' + index
 }))
-const value = ref([])
+const value = ref('value500')
 const handleChange = val => {
   console.log('change:', val)
 }

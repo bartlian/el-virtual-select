@@ -1,5 +1,6 @@
 <template>
   <el-select
+    ref="elSelectRef"
     v-model="localValue"
     :multiple="multiple"
     :disabled="disabled"
@@ -149,9 +150,17 @@ export default {
   },
   watch: {
     options: {
-      handler: function (val) {
+      handler: function (val, prevVal) {
         this.localList = val
         this.rawList = val
+
+        if (
+          Array.isArray(val) &&
+          val.length > 1 &&
+          (!prevVal || (Array.isArray(prevVal) && prevVal.length === 0))
+        ) {
+          this.showLabel()
+        }
       },
       deep: true,
       immediate: true
@@ -172,7 +181,26 @@ export default {
       rawList: []
     }
   },
+  mounted() {
+    this.showLabel()
+  },
   methods: {
+    async showLabel() {
+      // label显示处理
+      const { localValue, localList, valueKey, labelKey } = this
+
+      if (localValue && Array.isArray(localList) && localList.length > 1) {
+        const label = localList.find(i => i[valueKey] === localValue)?.[
+          labelKey
+        ]
+
+        if (label) {
+          await this.$nextTick()
+          this.$refs.elSelectRef.selectedLabel = label
+          this.$refs.elSelectRef.selected.currentLabel = label
+        }
+      }
+    },
     handleScrollerVisible() {
       const index = this.getIndex() - (this.dropdownItemsCount - 1)
       index > 1 && this.$refs.recycleScrollerRef.scrollToItem(index)
