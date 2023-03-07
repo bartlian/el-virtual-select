@@ -2006,7 +2006,7 @@ var za = {
   watch: {
     options: {
       handler: function(e, r) {
-        this.localList = e, this.rawList = e, Array.isArray(e) && e.length > 1 && (!r || Array.isArray(r) && r.length === 0) && this.showLabel();
+        this.localList = e, this.rawList = e, Array.isArray(e) && e.length >= 1 && (!r || Array.isArray(r) && r.length === 0) && this.showLabel();
       },
       deep: !0,
       immediate: !0
@@ -2171,7 +2171,7 @@ var za = {
   }, {
     item: e.chosenItem
   })], 2) : e._e()], 1);
-}, Aa = [], Ia = /* @__PURE__ */ Ta(za, Oa, Aa, !1, null, "d687983b", null, null), Pa = Ia.exports;
+}, Aa = [], Ia = /* @__PURE__ */ Ta(za, Oa, Aa, !1, null, "91c443ce", null, null), Pa = Ia.exports;
 export {
   Pa as default
 };
