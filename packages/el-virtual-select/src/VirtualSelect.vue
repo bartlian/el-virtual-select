@@ -166,7 +166,7 @@ export default {
 
         if (
           Array.isArray(val) &&
-          val.length > 1 &&
+          val.length >= 1 &&
           (!prevVal || (Array.isArray(prevVal) && prevVal.length === 0))
         ) {
           this.showLabel()
