@@ -58,13 +58,15 @@
       </template>
     </DynamicScroller>
     <el-option
-      v-if="!isShownDropdown && chosenItem"
-      :key="chosenItem[valueKey]"
-      :value="chosenItem[valueKey]"
-      :label="chosenItem[labelKey]"
-      :disabled="chosenItem.disabled"
+      v-if="!isShownDropdown && chosenItemList"
+      :key="chosenItemList[valueKey]"
+      :value="chosenItemList[valueKey]"
+      :label="chosenItemList[labelKey]"
+      :disabled="chosenItemList.disabled"
     >
-      <slot name="label" :item="chosenItem">{{ chosenItem[labelKey] }}</slot>
+      <slot name="label" :item="chosenItemList">{{
+        chosenItemList[labelKey]
+      }}</slot>
     </el-option>
   </el-select>
 </template>
@@ -166,7 +168,7 @@ export default {
 
         if (
           Array.isArray(val) &&
-          val.length >= 1 &&
+          val.length > 0 &&
           (!prevVal || (Array.isArray(prevVal) && prevVal.length === 0))
         ) {
           this.showLabel()
@@ -192,7 +194,7 @@ export default {
       // 是否展示过下拉选项
       isShownDropdown: false,
       // 详情等场景时el-select展示使用
-      chosenItem: null
+      chosenItemList: null
     }
   },
   mounted() {
@@ -201,10 +203,14 @@ export default {
   methods: {
     async showLabel() {
       // label显示处理
-      const { localValue, localList, valueKey } = this
-      if (localValue && Array.isArray(localList) && localList.length > 1) {
-        const chosenItem = localList.find(i => i[valueKey] === localValue)
-        this.chosenItem = chosenItem
+      const { value, localList, valueKey } = this
+      if (!!value && Array.isArray(localList) && localList.length > 0) {
+        const chosenItemList = localList.find(i =>
+          Array.isArray(value)
+            ? value.includes(i[valueKey])
+            : value === i[valueKey]
+        )
+        this.chosenItemList = chosenItemList
       }
     },
     handleScrollerVisible() {
