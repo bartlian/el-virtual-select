@@ -57,17 +57,17 @@
         <p class="empty-data">{{ noMatchText }}</p>
       </template>
     </DynamicScroller>
-    <el-option
-      v-if="!isShownDropdown && chosenItemList"
-      :key="chosenItemList[valueKey]"
-      :value="chosenItemList[valueKey]"
-      :label="chosenItemList[labelKey]"
-      :disabled="chosenItemList.disabled"
-    >
-      <slot name="label" :item="chosenItemList">{{
-        chosenItemList[labelKey]
-      }}</slot>
-    </el-option>
+    <template v-if="!isShownDropdown && chosenItemList">
+      <el-option
+        v-for="item in chosenItemList"
+        :key="item[valueKey]"
+        :value="item[valueKey]"
+        :label="item[labelKey]"
+        :disabled="item.disabled"
+      >
+        <slot name="label" :item="item">{{ item[labelKey] }}</slot>
+      </el-option>
+    </template>
   </el-select>
 </template>
 
@@ -205,10 +205,8 @@ export default {
       // label显示处理
       const { value, localList, valueKey } = this
       if (!!value && Array.isArray(localList) && localList.length > 0) {
-        const chosenItemList = localList.find(i =>
-          Array.isArray(value)
-            ? value.includes(i[valueKey])
-            : value === i[valueKey]
+        const chosenItemList = localList.filter(i =>
+          value.includes(i[valueKey])
         )
         this.chosenItemList = chosenItemList
       }

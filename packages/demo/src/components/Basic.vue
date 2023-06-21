@@ -44,7 +44,7 @@ const list2 = Array.from({ length: 1000 }).map((i, index) => ({
   label: 'label' + index,
   value: 'value' + index
 }))
-const value2 = ref(['value500', 'value400'])
+const value2 = ref(['value0', 'value400'])
 const handleChange2 = val => {
   console.log('change:', val)
 }
