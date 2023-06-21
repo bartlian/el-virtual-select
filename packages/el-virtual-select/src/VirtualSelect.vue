@@ -225,7 +225,7 @@ export default {
     },
     handleFilter(query) {
       this.localList = this.rawList.filter(i =>
-        String(i[this.labelKey]).includes(query)
+        String(i[this.labelKey].toLowerCase()).includes(query.toLowerCase())
       )
     },
     handleSelectFocus() {
@@ -239,6 +239,7 @@ export default {
     handleSelectChange(val) {
       this.localValue = val
       this.$emit('input', val)
+      this.handleSelectFocus()
     }
   }
 }
