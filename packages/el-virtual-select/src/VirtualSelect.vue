@@ -205,9 +205,7 @@ export default {
       // label显示处理
       const { value, localList, valueKey } = this
       if (!!value && Array.isArray(localList) && localList.length > 0) {
-        const chosenItemList = localList.filter(i =>
-          value.includes(i[valueKey])
-        )
+        const chosenItemList = localList.filter(i => value === i[valueKey])
         this.chosenItemList = chosenItemList
       }
     },
