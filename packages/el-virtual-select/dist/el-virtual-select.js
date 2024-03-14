@@ -2073,7 +2073,7 @@ var Ia = {
             switch (o.prev = o.next) {
               case 0:
                 i = t.value, n = t.localList, a = t.valueKey, i && Array.isArray(n) && n.length > 0 && (l = n.filter(function(h) {
-                  return i.includes(h[a]);
+                  return i === h[a];
                 }), t.chosenItemList = l);
               case 2:
               case "end":
@@ -2206,7 +2206,7 @@ var Ia = {
       item: i
     })], 2);
   }) : t._e()], 2);
-}, Ca = [], Ea = /* @__PURE__ */ Pa(Ia, La, Ca, !1, null, "a4b48d05", null, null), ja = Ea.exports;
+}, Ca = [], Ea = /* @__PURE__ */ Pa(Ia, La, Ca, !1, null, "419ff6fb", null, null), ja = Ea.exports;
 export {
   ja as default
 };
